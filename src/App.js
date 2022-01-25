@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import Form from "./Form/Form";
+import Users from "./components/Users/Users";
+import {useEffect, useState} from "react";
+import {userService} from "./services/user.service";
+import users from "./components/Users/Users";
 
-function App() {
+const App = () => {
+    const [user, setUsers] = useState([]);
+    const [filteredUsers, setFilteredUsers] = useState([]);
+
+    useEffect(()=>{
+        userService.getAll().then(value => {
+            setUsers([...value])
+            setFilteredUsers([...value])
+        })
+    }, [])
+
+    const getFilter = (data) => {
+        let filteredArr = [...user]
+
+
+        if (data.name){
+            filteredArr = filteredArr.filter(user => user.name.toLowerCase().includes(data.name.toLowerCase()))
+        }
+        if (data.username){
+            filteredArr = filteredArr.filter(user => user.username.toLowerCase().includes(data.username.toLowerCase()))
+        }
+        if (data.email){
+            filteredArr = filteredArr.filter(user => user.email.toLowerCase().includes(data.email.toLowerCase()))
+        }
+        setFilteredUsers(filteredArr)
+    }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <Form getFilter={getFilter}/>
+          <Users users={filteredUsers}/>
+      </div>
   );
-}
+};
 
 export default App;
