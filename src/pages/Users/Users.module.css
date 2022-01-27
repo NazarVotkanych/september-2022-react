@@ -1,0 +1,7 @@
+.middle {
+    display: flex;
+   justify-content: right;
+    margin-top: -150px;
+    margin-right: 200px;
+
+}

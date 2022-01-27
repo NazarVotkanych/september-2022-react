@@ -1,9 +1,11 @@
+import {Link} from "react-router-dom";
 
-const User = ({user:{userId, name}}) => {
+const User = ({user}) => {
+    const {id, name} = user
     return (
         <div>
-            <div>Id: {userId}</div>
-            <div>Name: {name }</div>
+            {id}: {name} -
+            <button><Link to={"/users/" + id} state={user}>User Details</Link></button>
         </div>
     );
 };
