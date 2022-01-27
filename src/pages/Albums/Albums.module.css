@@ -1,0 +1,11 @@
+.albums {
+    justify-content: right;
+    margin-top: -100px;
+
+    width: 400px;
+    height: 100px;
+
+}
+.albums_img {
+    width: 200px;
+}

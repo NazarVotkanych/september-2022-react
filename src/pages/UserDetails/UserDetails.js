@@ -1,7 +1,7 @@
 import {Link, Outlet, useLocation, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {postService} from "../../services/post.service";
-import user from "../../components/User/User";
+
 
 const UserDetails = () => {
     const {id} = useParams();
@@ -10,7 +10,7 @@ const UserDetails = () => {
 
     useEffect(() =>{
         postService.getById(id).then(value => setUserDetail(value))
-    })
+    },[id])
     return (
         <div>
             {userDetail && (
@@ -23,6 +23,9 @@ const UserDetails = () => {
             )}
             <button><Link to={"/users/" + id + "/posts"}>Post</Link></button>
 
+            <div>
+                <Outlet/>
+            </div>
         </div>
     );
 };

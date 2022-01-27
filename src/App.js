@@ -6,23 +6,36 @@ import Posts from "./pages/Posts/Posts";
 import Layout from "./components/Layout/Layout";
 import UserDetails from "./pages/UserDetails/UserDetails";
 import UsersPosts from "./pages/Users.posts/UsersPosts";
+import Albums from "./pages/Albums/Albums";
+import Photos from "./pages/Photos/Photos";
+import PostsDetails from "./pages/PostsDetails/PostsDetails";
+import Comments from "./pages/Comments/Comments";
 
 function App() {
-  return (
-      <>
-          <Routes>
-              <Route path={"/"} element={<Layout/>}>
-                <Route path={"/users"} element={<Users/>}>
-                    <Route path={"/users:id"} element={<UserDetails/>}/>
-                    <Route path={"/users:id/posts"} element={<UsersPosts/>}/>
+    return (
+        <>
+            <Routes>
+                <Route path={"/"} element={<Layout/>}>
+                    <Route path={"/users"} element={<Users/>}>
+                        <Route exact path={":id"} element={<UserDetails/>}>
+                            <Route path={"posts"} element={<UsersPosts/>}/>
+                        </Route>
+                        <Route path={":id/albums"} element={<Albums/>}>
+                            <Route path={":albumsId/photos"} element={<Photos/>}/>
+
+                        </Route>
+                    </Route>
+                    <Route path={"/posts"} element={<Posts/>}>
+                        <Route exact path={":id"} element={<PostsDetails/>}>
+                            <Route path={"comments"} element={<Comments/>}/>
+                        </Route>
+                    </Route>
                 </Route>
-                <Route path={"/posts"} element={<Posts/>}/>
-              </Route>
-          </Routes>
+            </Routes>
 
-      </>
+        </>
 
-      );
+    );
 }
 
 export default App;

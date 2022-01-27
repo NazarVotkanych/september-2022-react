@@ -6,6 +6,8 @@ const User = ({user}) => {
         <div>
             {id}: {name} -
             <button><Link to={"/users/" + id} state={user}>User Details</Link></button>
+
+            <button><Link to={"/users/" + id + "/albums"}>Albums</Link></button>
         </div>
     );
 };

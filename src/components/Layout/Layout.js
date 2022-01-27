@@ -1,5 +1,5 @@
 import css from "../../App.module.css";
-import {Link, Outlet, NavLink} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 
 const Layout = () => {
     return (

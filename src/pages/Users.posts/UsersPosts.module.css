@@ -1,0 +1,9 @@
+.bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    /*margin-top: -150px;*/
+    margin-right: 100px;
+    background-color: #a13e3e;
+    width: 400px;
+}
