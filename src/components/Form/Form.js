@@ -12,7 +12,7 @@ const saveCat = () => {
   dispatch({type:'ADD_CAT', payload:{cat:catInput.current.value}})
 }
 const saveDog = () => {
-    dispatch({type:'ADD_DOG', payload:{dog:catInput.current.value}})
+    dispatch({type:'ADD_DOG', payload:{dog:dogInput.current.value}})
 }
 
     return (
