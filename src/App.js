@@ -31,9 +31,9 @@ function App() {
   return (
     <div>
       <Form dispatch={dispatch}/>
-        <div >
-            <Cats cats={cats}/>
-            <Dogs dogs={dogs}/>
+        <div className={css.wrap}>
+            <Cats cats={cats} dispatch={dispatch}/>
+            <Dogs dogs={dogs} dispatch={dispatch}/>
         </div>
     </div>
   );
